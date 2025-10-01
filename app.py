@@ -6,7 +6,7 @@ from src.model import CustomLinearRegression
 def main():
     st.set_page_config(page_title="Hw1_史福隆_線性回歸TEST", page_icon="📈", layout="wide")
     
-    st.title("📈 線性回歸實驗室")
+    st.title("📈 Hw1_史福隆_線性回歸TEST")
     
     # 側邊欄參數設置
     st.sidebar.header("模型參數設置")
