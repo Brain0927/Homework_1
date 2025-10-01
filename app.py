@@ -9,7 +9,7 @@ def main():
         layout="wide"
     )
     
-    st.title("📈 線性回歸實驗室 (Linear Regression Laboratory)")
+    st.title("HW1_史福隆📈 線性回歸實驗室 (Linear Regression Laboratory)251001")
     
     # 側邊欄參數設置 (Sidebar Parameter Settings)
     st.sidebar.header("模型參數設置 (Model Parameters)")
