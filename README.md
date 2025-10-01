@@ -1,8 +1,10 @@
-# 線性回歸互動實驗室
+# 線性回歸互動實驗室 (Interactive Linear Regression Laboratory)
 
-## 📊 專案概述
+## 📊 專案概述 (Project Overview)
 
 這是一個基於 Streamlit 開發的互動式線性回歸視覺化工具，旨在幫助用戶理解線性回歸的原理和應用。使用者可以通過調整各種參數，即時觀察線性回歸模型的變化。
+
+(This is an interactive linear regression visualization tool developed with Streamlit, designed to help users understand the principles and applications of linear regression. Users can observe real-time changes in the regression model by adjusting various parameters.)
 
 ## ✨ 主要特點
 
