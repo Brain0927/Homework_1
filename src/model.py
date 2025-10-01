@@ -79,31 +79,26 @@ class CustomLinearRegression:
         return metrics
     
     @log_execution_time(logger)
-    def plot_regression(self, X, y, title="線性回歸分析", highlight_outliers=True):
-        """繪製回歸分析圖"""
-        logger.info("繪製回歸分析圖")
+    def get_plot_data(self, X, y, title="線性回歸分析"):
+        """獲取繪圖所需的數據"""
+        logger.info("準備繪圖數據")
         y_pred = self.predict(X)
         
-        plt.figure(figsize=(10, 6))
-        plt.scatter(X, y, color='blue', alpha=0.5, label='實際數據')
-        plt.plot(X, y_pred, color='red', label='回歸線')
+        # 計算誤差並找出最大的5個離群值
+        errors = np.abs(y - y_pred)
+        top_5_outliers_idx = np.argsort(errors)[-5:][::-1]
         
-        if highlight_outliers:
-            # 計算誤差並找出最大的5個離群值
-            errors = np.abs(y - y_pred)
-            top_5_outliers_idx = np.argsort(errors)[-5:][::-1]
-            # 標記離群值
-            plt.scatter(X[top_5_outliers_idx], y[top_5_outliers_idx], 
-                       color='red', s=100, alpha=0.7, label='離群值')
-            
-        plt.title(title, fontsize=12, pad=15)
-        plt.xlabel('X 值', fontsize=10)
-        plt.ylabel('Y 值', fontsize=10)
-        plt.legend(prop={'size': 10})
-        plt.grid(True, alpha=0.3)
+        plot_data = {
+            'x_data': X.ravel(),
+            'y_data': y,
+            'y_pred': y_pred,
+            'outliers_x': X[top_5_outliers_idx].ravel(),
+            'outliers_y': y[top_5_outliers_idx],
+            'title': title
+        }
         
-        logger.debug("回歸分析圖繪製完成")
-        return plt.gcf()
+        logger.debug("繪圖數據準備完成")
+        return plot_data
 
 if __name__ == "__main__":
     import streamlit as st

@@ -1,13 +1,6 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
 from src.model import CustomLinearRegression
-import matplotlib as mpl
-
-# 設定中文字型支援
-plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei', 'Arial Unicode MS', 'SimHei', 'sans-serif']
-plt.rcParams['axes.unicode_minus'] = False  # 正確顯示負號
-mpl.rcParams['font.family'] = ['Microsoft JhengHei', 'Arial Unicode MS', 'SimHei', 'sans-serif']
 
 def main():
     st.set_page_config(page_title="Hw1_史福隆_線性回歸TEST", page_icon="📈", layout="wide")
@@ -65,9 +58,54 @@ def main():
     
     # 繪製圖形
     st.write("### 線性回歸視覺化")
-    fig = model.plot_regression(X, y, "線性回歸分析圖 (紅點標記離群值)")
-    st.pyplot(fig)
-    plt.close()
+    
+    # 獲取繪圖數據
+    plot_data = model.get_plot_data(X, y, "線性回歸分析圖")
+    
+    # 使用 Streamlit 的 plotly 圖表
+    import plotly.graph_objects as go
+    
+    fig = go.Figure()
+    
+    # 添加實際數據點
+    fig.add_trace(go.Scatter(
+        x=plot_data['x_data'],
+        y=plot_data['y_data'],
+        mode='markers',
+        name='實際數據',
+        marker=dict(color='blue', size=8, opacity=0.6)
+    ))
+    
+    # 添加回歸線
+    fig.add_trace(go.Scatter(
+        x=plot_data['x_data'],
+        y=plot_data['y_pred'],
+        mode='lines',
+        name='回歸線',
+        line=dict(color='red', width=2)
+    ))
+    
+    # 添加離群值點
+    fig.add_trace(go.Scatter(
+        x=plot_data['outliers_x'],
+        y=plot_data['outliers_y'],
+        mode='markers',
+        name='離群值',
+        marker=dict(color='red', size=12, symbol='circle')
+    ))
+    
+    # 更新圖表布局
+    fig.update_layout(
+        title=plot_data['title'],
+        xaxis_title='X 值',
+        yaxis_title='Y 值',
+        showlegend=True,
+        hovermode='closest',
+        template='plotly_white'
+    )
+    
+    # 顯示圖表
+    st.plotly_chart(fig, use_container_width=True)
 
     # 顯示模型結果
     st.write("### 模型結果")

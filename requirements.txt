@@ -1,6 +1,6 @@
 # 線性回歸專案依賴套件
 numpy>=1.21.0
 pandas>=1.3.0
-matplotlib>=3.4.0
 scikit-learn>=1.0.0
 streamlit>=1.15.0
+plotly>=5.13.0
