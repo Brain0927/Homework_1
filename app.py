@@ -2,6 +2,12 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from src.model import CustomLinearRegression
+import matplotlib as mpl
+
+# 設定中文字型支援
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei', 'Arial Unicode MS', 'SimHei', 'sans-serif']
+plt.rcParams['axes.unicode_minus'] = False  # 正確顯示負號
+mpl.rcParams['font.family'] = ['Microsoft JhengHei', 'Arial Unicode MS', 'SimHei', 'sans-serif']
 
 def main():
     st.set_page_config(page_title="Hw1_史福隆_線性回歸TEST", page_icon="📈", layout="wide")
