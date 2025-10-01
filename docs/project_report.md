@@ -97,7 +97,7 @@ class CustomLinearRegression:
 - Streamlit Cloud
 
 ### 訪問地址
-- https://[你的應用名稱].streamlit.app
+- https://homework1-bfm8a4gqqqvpwhhtvjnedl.streamlit.app/
 
 ## 未來展望
 
