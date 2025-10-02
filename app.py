@@ -1,5 +1,6 @@
 import streamlit as st
 import numpy as np
+import plotly.graph_objects as go
 from src.model import CustomLinearRegression
 
 def main():
@@ -65,9 +66,6 @@ def main():
     
     # 獲取繪圖數據 (Get Plot Data)
     plot_data = model.get_plot_data(X, y, "線性回歸分析圖 (Linear Regression Analysis)")
-    
-    # 使用 Streamlit 的 plotly 圖表
-    import plotly.graph_objects as go
     
     fig = go.Figure()
     

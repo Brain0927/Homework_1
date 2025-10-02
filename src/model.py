@@ -1,13 +1,8 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
-import matplotlib.pyplot as plt
-from matplotlib.font_manager import FontProperties
+import plotly.graph_objects as go
 from src.logger import logger, log_execution_time
-
-# 設定中文字型
-plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']  # 微軟正黑體
-plt.rcParams['axes.unicode_minus'] = False  # 讓負號正確顯示
 
 class CustomLinearRegression:
     def __init__(self):
@@ -132,4 +127,4 @@ if __name__ == "__main__":
     
     st.subheader("回歸分析圖")
     fig = regression_model.plot_regression(X, y)
-    st.pyplot(fig)
+    st.plotly_chart(fig)
